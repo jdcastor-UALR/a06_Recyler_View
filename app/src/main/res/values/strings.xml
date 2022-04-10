@@ -4,4 +4,11 @@
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam efficitur ipsum in placerat molestie.  Fusce quis mauris a enim sollicitudin
         \n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam efficitur ipsum in placerat molestie.  Fusce quis mauris a enim sollicitudin
     </string>
+    <string name="click_this_to_delete_the_record">Click this to delete the record</string>
+    <string name="gray_circle">Gray Circle</string>
+    <string name="john_smith">John Smith</string>
+    <string name="john_smith_gmail_com">john.smith@gmail.com</string>
+    <string name="t">T</string>
+    <string name="_30_apr_2022">30 Apr 2022</string>
+    <string name="add_email">Add Email</string>
 </resources>

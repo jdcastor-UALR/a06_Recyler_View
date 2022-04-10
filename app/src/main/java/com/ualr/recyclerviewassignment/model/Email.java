@@ -1,13 +1,13 @@
-package com.ualr.recyclerviewassignment.model;;
+package com.ualr.recyclerviewassignment.model;
 
-public class Inbox {
+public class Email {
     private String from;
     private String email;
     private String message;
     private String date;
     private boolean selected;
 
-    public Inbox() {
+    public Email() {
         this.selected = false;
     }
 

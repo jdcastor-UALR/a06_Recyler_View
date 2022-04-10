@@ -2,11 +2,17 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/lyt_parent"
+    android:id="@+id/item_parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- TODO 02. Add RecyclerView element here -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:scrollbars="vertical"
+        android:scrollingCache="true"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
@@ -18,6 +24,7 @@
         app:backgroundTint="@color/blue_500"
         app:fabSize="normal"
         app:rippleColor="@color/blue_900"
-        app:srcCompat="@drawable/ic_add_circle_outline_24px" />
+        app:srcCompat="@drawable/ic_add_circle_outline_24px"
+        android:contentDescription="@string/add_email"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
