@@ -9,12 +9,13 @@
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="AppTheme.InitialText">
-        <item name="android:textColor">@color/overlay_light_90</item>
-    </style>
-
     <style name="bold">
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="initial" parent="bold">
+       <item name="android:textColor">@color/overlay_light_90</item>
+        <item name="android:textSize">20sp</item>
     </style>
 
     <style name="date" parent="bold">

@@ -22,23 +22,24 @@ public class DataGenerator {
 
     public static List<Email> getInboxData(Context ctx) {
         List<Email> items = new ArrayList<>();
-        String[] names = ctx.getResources().getStringArray(R.array.people_names);
-        String[] dates = ctx.getResources().getStringArray(R.array.general_date);
+        String[] names;
+        names = ctx.getResources().getStringArray(R.array.people_names);
+        String[] dates;
+        dates = ctx.getResources().getStringArray(R.array.general_date);
 
-        for (String s : names) {
+        Arrays.stream(names).forEach(s -> {
             Email obj = new Email();
             obj.setFrom(s);
             obj.setEmail(Tools.getEmailFromName(obj.getFrom()));
             obj.setMessage(ctx.getResources().getString(R.string.lorem_ipsum));
             obj.setDate(dates[randInt(dates.length - 1)]);
             items.add(obj);
-        }
+        });
         Collections.shuffle(items);
         return items;
     }
 
     public static Email getRandomInboxItem(Context ctx) {
-        List<Email> items = new ArrayList<>();
         String[] names = ctx.getResources().getStringArray(R.array.people_names);
         String[] dates = ctx.getResources().getStringArray(R.array.general_date);
         int indexName = randInt(names.length - 1);
