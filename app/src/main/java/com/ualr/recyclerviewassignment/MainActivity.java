@@ -25,20 +25,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initComponent() {
-        List<Email> emails = DataGenerator.getInboxData(getApplicationContext());
-
+        List<Email> emails_bootstrap = DataGenerator.getInboxData(getApplicationContext());
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-
-        mAdapter = new AdapterListBasic(this, emails);
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(mAdapter);
 
+        mAdapter = new AdapterListBasic(this, emails_bootstrap);
         mAdapter.setOnEmailClickListener(position -> mAdapter.selectEmail(position));
         mAdapter.setOnDeleteClickListener(position -> mAdapter.removeEmail(position));
 
-        // TODO 09. Create a new instance of the created Adapter class and bind it to the RecyclerView instance created in step 03
+        recyclerView.setAdapter(mAdapter);
 
         findViewById(R.id.fab).setOnClickListener(view -> {
             mAdapter.addEmail(0,DataGenerator.getRandomInboxItem(this));

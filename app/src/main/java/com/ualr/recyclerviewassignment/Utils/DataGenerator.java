@@ -40,8 +40,10 @@ public class DataGenerator {
     }
 
     public static Email getRandomInboxItem(Context ctx) {
-        String[] names = ctx.getResources().getStringArray(R.array.people_names);
-        String[] dates = ctx.getResources().getStringArray(R.array.general_date);
+        String[] names;
+        names = ctx.getResources().getStringArray(R.array.people_names);
+        String[] dates;
+        dates = ctx.getResources().getStringArray(R.array.general_date);
         int indexName = randInt(names.length - 1);
         int indexDate = randInt(dates.length - 1);
         Email obj = new Email();

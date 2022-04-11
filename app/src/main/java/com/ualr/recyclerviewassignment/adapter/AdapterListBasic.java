@@ -1,8 +1,6 @@
 package com.ualr.recyclerviewassignment.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,7 +57,7 @@ public class AdapterListBasic extends RecyclerView.Adapter {
     }
 
     public void removeEmail(int position){
-        if(position >= mEmails.size())
+        if(position < 0 || position >= mEmails.size())
             return;
         if(position == selected_index)
             selected_index=-1;
@@ -71,6 +69,8 @@ public class AdapterListBasic extends RecyclerView.Adapter {
     }
 
     public void addEmail(int position, Email email){
+        if(position < 0 || position > mEmails.size())
+            return;
         mEmails.add(position, email);
         if(position <= selected_index)
             selected_index++;
@@ -95,6 +95,7 @@ public class AdapterListBasic extends RecyclerView.Adapter {
         vh.content.setText(e.getMessage());
         vh.email.setText(e.getEmail());
         vh.initial.setText(e.getFrom().substring(0,1));
+
         if(e.isSelected()) {
             vh.initial.setVisibility(View.INVISIBLE);
             vh.delete_email.setVisibility(View.VISIBLE);
@@ -105,7 +106,6 @@ public class AdapterListBasic extends RecyclerView.Adapter {
             vh.delete_email.setVisibility(View.INVISIBLE);
             vh.clickParent.setBackgroundColor(mContext.getResources().getColor(R.color.grey_3,null));
         }
-
     }
 
     @Override
@@ -140,8 +140,17 @@ public class AdapterListBasic extends RecyclerView.Adapter {
 
         @Override
         public void onClick(View view) {
+            // range check on getLayoutPosition() result
+            // when quickly deleting can return -1 might as well check for over too
+            if (getLayoutPosition()<0 || getLayoutPosition()>= mEmails.size())
+                return;
+            // if click is coming from the ImageView of a selected email, then go ahead and
+            // send the delete signal. If not then select the item.
+            // This allows the user to click on the thumbnail to select an item as well. For less
+            // required finger movement to select and delete quickly.
             if (view instanceof ImageView
-                    && mEmails.get(getLayoutPosition()).isSelected())
+                    && mEmails.get(getLayoutPosition()).isSelected()
+            )
                 mOnDeleteClickListener.onDeleteClick(getLayoutPosition());
             else
                 mOnEmailClickListener.onEmailClick(getLayoutPosition());
